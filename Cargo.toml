@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 nats = "0.18.1"
+io = "0.0.2"
