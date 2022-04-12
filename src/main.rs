@@ -1,14 +1,24 @@
-use std::io;
-use nats::*;
+use nats::{*, jetstream::Error};
+// use nats::{jetstream::Error};
 
-fn main() {
+fn main() -> Result<(),Error> {
 
-    let mut nome = String::new();
-    println!("Enter your name: ");
-    let n_caratteri = io::stdin().read_line(&mut nome).unwrap();
-    println!("Hello , {}", nome);
-    println!("numero caratteri nome: {}", n_caratteri);
+    println!("START!");
+
+    let nc = nats::connect("localhost:4222")?;
+
+    let nc2 = nats::Options::with_user_pass("derek", "s3cr3t!")
+        .with_name("My Rust NATS App")
+        .connect("127.0.0.1")?;
+
+    println!("END!");
+
+    Ok(())
     
-    println!("***************************************");
-
 }
+
+
+
+
+
+

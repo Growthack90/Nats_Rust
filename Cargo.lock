@@ -313,12 +313,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "io"
-version = "0.0.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "85c839d30624bc6b3dced6a4652823d1967fb7939d4848ad002d509b1fc916b2"
-
-[[package]]
 name = "itoa"
 version = "0.4.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -427,7 +421,6 @@ dependencies = [
 name = "nats-mimmo"
 version = "0.1.0"
 dependencies = [
- "io",
  "nats",
 ]
 
