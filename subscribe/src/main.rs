@@ -1,5 +1,7 @@
 use nats;
 use std::io::Error;
+use std::thread;
+use std::time::Duration;
 
 fn main() -> Result<(),Error> {
 
@@ -8,21 +10,32 @@ fn main() -> Result<(),Error> {
     // SUBSCRIBE
     let nc = nats::connect("localhost:4222")?;
     let sub = nc.subscribe("test")?;
-    for msg in sub.messages() {
-        println!("Helloooo {}!!!", 100);
-     
-    print_message();
 
-    }
+/*         while x < 10 {
+            for x in 0..10 {
+                println!("Helloooo {}!!!", 100);
+                thread::sleep(Duration::from_millis(1000)); // wait by 1 sec
+                println!("{}", x + 1);
+                if x == 10 {
+                    break;
+                }
+            }
+        } */    
 
-    println!("END!");
+        let mut x = 0;
 
-    Ok(())
-    
-}
+        for msg in sub.messages() {
+            thread::sleep(Duration::from_millis(1000)); // wait by 1 sec
+            println!("Helloooo {}!!!", 100);
+            x += 1;
+            if x == 10 {
+                break;
+            }
+        }
 
-fn print_message(){
-    println!("Hello, Domenico!");
+        println!("END!");
+
+    Ok(())   
 }
 
 

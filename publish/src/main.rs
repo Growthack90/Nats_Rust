@@ -12,7 +12,7 @@ fn main() -> Result<(),Error> {
     println!("I am PUBLISH - Read me!");
     nc.publish("test", "Hello World!")?;
 
-    let mut x = 0;
+    let x = 0;
     for x in 0..10 {
         thread::sleep(Duration::from_millis(1000)); // wait by 1 sec
         println!("{}", x + 1);
