@@ -10,12 +10,11 @@ fn main() -> Result<(),Error> {
     // PUBLISH
     let nc = nats::connect("localhost:4222")?;
     println!("I am PUBLISH - Read me!");
-    nc.publish("test", "Hello World!")?;
 
-    let x = 0;
     for x in 0..10 {
         thread::sleep(Duration::from_millis(1000)); // wait by 1 sec
         println!("{}", x + 1);
+        nc.publish("test", "Hello World!")?;
     }
 
     println!("END!");
