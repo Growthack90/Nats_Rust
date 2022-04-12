@@ -1,5 +1,7 @@
 use nats;
 use std::io::Error;
+use std::thread;
+use std::time::Duration;
 
 fn main() -> Result<(),Error> {
 
@@ -10,15 +12,10 @@ fn main() -> Result<(),Error> {
     println!("I am PUBLISH - Read me!");
     nc.publish("test", "Hello World!")?;
 
-    let mut check =  0;
-    while check < 11{
-    println!("Check is : {check}");
-    check+=1;
-    println!("After incrementing: {check}");
-
-    if check == 10{
-        break; // stop while
-    }
+    let mut x = 0;
+    for x in 0..10 {
+        thread::sleep(Duration::from_millis(1000)); // wait by 1 sec
+        println!("{}", x + 1);
     }
 
     println!("END!");
